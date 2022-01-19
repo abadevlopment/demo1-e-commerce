@@ -1,77 +1,172 @@
+$c1 : #141b29;
+$c2 : #124143;
+$c3 : #5ac994;
+$c4 : #c0f7b7;
+$c5 : #fffefd;
+//font-family: 'Space Mono', monospace;
+
+//MIXINS
+@mixin center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin but {
+    // margin-top: 20%;
+    // border-radius: 15px;
+    background-color: inherit;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+    -webkit-transition: all 0.15s ease;
+}
+@mixin butHov {
+    background: rgb(18,65,67);
+    background: -moz-radial-gradient(circle, rgba(18,65,67,1) 0%, rgba(90,201,148,1) 100%);
+    background: -webkit-radial-gradient(circle, rgba(18,65,67,1) 0%, rgba(90,201,148,1) 100%);
+    background: radial-gradient(circle, rgba(18,65,67,1) 0%, rgba(90,201,148,1) 100%);
+    box-shadow: 0px 0px 8px 4px rgba(90,201,148,0.8);
+    -webkit-box-shadow:0px 0px 8px 4px rgba(90,201,148,0.8);
+    -moz-box-shadow: 0px 0px 8px 4px rgba(90,201,148,0.8);
+    transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+}
+@mixin butAct {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    box-shadow: 0px 0px 7.2px 3.6px rgba(90,201,148,0.8);
+    -webkit-box-shadow:0px 0px 7.2px 3.6px rgba(90,201,148,0.8);
+    -moz-box-shadow: 0px 0px 7.2px 3.6px rgba(90,201,148,0.8);
+}
+
 .sidebar{
     backdrop-filter: blur(16px) saturate(100%);
     -webkit-backdrop-filter: blur(16px) saturate(100%);
     background-color: rgba(18, 65, 67, 0.75);
     border: 1px solid rgba(255, 255, 255, 0.125);
-    overflow: hidden;
+    // overflow: hidden;
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: 10% auto 10% 10%;
     grid-template-areas:
     'lo' 'bo' 'co' 'in' ;
     .sidebarLogo{
-        border: red solid 2px;
         grid-area: lo;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        @include center;
+        .sideButton{
+            color: $c5;
+            width: 7vh;
+            height: 7vh;
+            border-radius: 10vh;
+            font-size: 7vh;
+            font-family: 'Space Mono', monospace;
+            font-weight: bolder;
+            text-align: center;
+            @include center;
+            @include but;
+
+            div{
+                height: 100%;
+                width: 100%;
+            }
+            // .img{
+            //     max-height: 1000%;
+            //     width: auto;
+            // }
+            // p{
+            //     // font-family: 'Roboto', sans-serif;
+            //     font-size: 11vh;
+            //     font-family: 'Space Mono', monospace;
+            //     font-weight: bolder;
+            //     @include center;
+            // }
+        }
+        .sideButton:hover{
+            transform: scale(1.1);
+            -webkit-transform: scale(1.1);
+        }
+        .sideButton:active{
+            transform: scale(1);
+            -webkit-transform: scale(1);
+       
+        }
     }
     .sidebarButtons{
-        border: red solid 2px;
         grid-area: bo;
         display: flex;
         flex-direction: column;
         flex-wrap: nowrap;
         align-items: center;
-
         .sideButton{
-            width: 70%;
-            height: 10%;
+            width: 7vh;
+            height: 7vh;
+            border-radius: 10vh;
             margin-top: 20%;
-            border-radius: 15px;
-            background-color: inherit;
-            border: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.15s ease;
-            -webkit-transition: all 0.15s ease;
-            .img{
-                max-height: 1000%;
-                width: auto;
+
+            @include but;
+            @include center;
+            .sideImg{
+                height: 70%;
             }
         }
         .sideButton:hover{
-            background: rgb(18,65,67);
-            background: -moz-radial-gradient(circle, rgba(18,65,67,1) 0%, rgba(90,201,148,1) 100%);
-            background: -webkit-radial-gradient(circle, rgba(18,65,67,1) 0%, rgba(90,201,148,1) 100%);
-            background: radial-gradient(circle, rgba(18,65,67,1) 0%, rgba(90,201,148,1) 100%);
-            box-shadow: 0px 0px 8px 4px rgba(90,201,148,0.8);
-            -webkit-box-shadow:0px 0px 8px 4px rgba(90,201,148,0.8);
-            -moz-box-shadow: 0px 0px 8px 4px rgba(90,201,148,0.8);
-            transform: scale(1.05);
-            -webkit-transform: scale(1.05);
+            @include butHov;
+        }
+        .sideButton:active{
+            @include butAct;
+        }
+        // .tool{
+        //     border-radius: 56% 44% 24% 76% / 53% 14% 86% 47% ;
+        // }
+    }
+    .sidebarConfig{
+        grid-area: co;
+        @include center;
+        .sideButton{
+            color: $c5;
+            width: 6vh;
+            height: 6vh;
+            border-radius: 10vh;
+            @include but;
+            .sideImg{
+                height: 70%;
+            }
+        }
+        .sideButton:hover{
+            transform: scale(1.1);
+            -webkit-transform: scale(1.1);
         }
         .sideButton:active{
             transform: scale(1);
             -webkit-transform: scale(1);
-            box-shadow: 0px 0px 7.2px 3.6px rgba(90,201,148,0.8);
-            -webkit-box-shadow:0px 0px 7.2px 3.6px rgba(90,201,148,0.8);
-            -moz-box-shadow: 0px 0px 7.2px 3.6px rgba(90,201,148,0.8);
         }
-    }
-    .sidebarConfig{
-        border: red solid 2px;
-        grid-area: co;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+
     }
     .sidebarInfo{
-        border: red solid 2px;
         grid-area: in;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        @include center;
+        .sideButton{
+            color: $c5;
+            width: 6vh;
+            height: 6vh;
+            border-radius: 10vh;
+            @include but;
+            // .img{
+            //     max-height: 1000%;
+            //     width: auto;
+            // }
+        }
+        .sideButton:hover{
+            transform: scale(1.1);
+            -webkit-transform: scale(1.1);
+        }
+        .sideButton:active{
+            transform: scale(1);
+            -webkit-transform: scale(1);
+        }
+
     }
 }

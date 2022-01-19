@@ -1,3 +1,204 @@
+$c1 : #141b29;
+$c2 : #124143;
+$c3 : #5ac994;
+$c4 : #c0f7b7;
+$c5 : #fffefd;
+//font-family: 'Space Mono', monospace;
+
+@mixin center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+@mixin butHov {
+    background: rgb(18,65,67);
+    background: -moz-radial-gradient(circle, rgba(18,65,67,1) 0%, rgba(90,201,148,1) 100%);
+    background: -webkit-radial-gradient(circle, rgba(18,65,67,1) 0%, rgba(90,201,148,1) 100%);
+    background: radial-gradient(circle, rgba(18,65,67,1) 0%, rgba(90,201,148,1) 100%);
+    box-shadow: 0px 0px 6px 3px rgba(90,201,148,0.8);
+    -webkit-box-shadow:0px 0px 6px 3px rgba(90,201,148,0.8);
+    -moz-box-shadow: 0px 0px 6px 3px rgba(90,201,148,0.8);
+    transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+}
+@mixin butAct {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    box-shadow: 0px 0px 5px 2.5px rgba(90,201,148,0.8);
+    -webkit-box-shadow:0px 0px 5px 2.5px rgba(90,201,148,0.8);
+    -moz-box-shadow: 0px 0px 5px 2.5px rgba(90,201,148,0.8);
+}
+
+
 .navbar{
-    border: green solid 2px;
+    // border: green solid 2px;
+    display: grid;
+    grid-template-columns: 30% 40% 30%;
+    grid-template-rows: 100%;
+    grid-template-areas: 'nn nb nu';
+    .navbarName{
+        background-color: transparent;
+        grid-area: nn;
+        color: $c5;
+        font-family: 'Space Mono', monospace;
+        font-size: 3.5vh;
+        font-weight: bolder;
+        margin: 1vh 1vh 1vh 1vh;
+        border-radius: 10vh;
+        // border: red solid 2px;
+        @include center;
+    }
+    .navbarButtons{
+        grid-area: nb;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        margin: 1vh 1vh 1vh 1vh;
+        // border: red solid 2px;
+
+        .navButton{
+            background-color: transparent;
+            // background-color: blue;
+            font-family: 'Space Mono', monospace;
+            color: $c5;
+            font-size: 1.75vh;
+            height: 100%;
+            width: 20%;
+            border-radius: 10vh;
+        }
+        .navButton:hover{
+            @include butHov;
+        }
+        .navButton:active{
+            @include butAct;
+        }
+    }
+    .navbarUser{
+        grid-area: nu;
+        margin: 1vh 1vh 1vh 1vh;
+        border-radius: 3vh;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 100%;
+        grid-template-areas: 'bc bu';
+        
+        // border: red solid 2px;
+        .navButtonCart{
+            grid-area: bc;
+            font-family: 'Space Mono', monospace;
+            color: $c5;
+            font-size: 1.5vh;
+            border-radius: 10vh;
+            margin: 0 1vh 0 0;
+            // margin-right: 1vh;
+            // height: 100%;
+            // width: 15%;
+
+            display: grid;
+            grid-template-columns: 15% 15% 20% 50%;
+            grid-template-rows: 100%;
+            grid-template-areas:
+            'cq ca ci cp';
+
+            .cartQty{
+                grid-area: cq;
+                height: 100%;
+                @include center;
+                // background-color: red;
+                // border: green solid 1px;
+            }
+            .cartArrow{
+                grid-area: ca;
+                height: 100%;
+                @include center;
+                // background-color: red;
+                // border: green solid 1px;
+                .arrowImg{
+                    height: 50%;
+                }
+            }
+            .cartIcon{
+                grid-area: ci;
+                height: 100%;
+                @include center;
+                // background-color: red;
+                // border: green solid 1px;
+                .iconImg{
+                    height: 60%;
+                }
+            }
+            .cartPrice{
+                grid-area: cp;
+                height: 100%;
+                @include center;
+                // background-color: red;
+                // border: green solid 1px;
+            }
+        }
+        .navButtonNoti{
+            grid-area: bn;
+            font-family: 'Space Mono', monospace;
+            color: $c5;
+            font-size: 1.5vh;
+            border-radius: 10vh;
+            // margin: 0 0.5vh 0 0.5vh;
+            @include center;
+            .notImg{
+                height: 60%;
+            }
+        }
+        .navButtonUser{
+            grid-area: bu;
+            font-family: 'Space Mono', monospace;
+            color: $c5;
+            font-size: 1.5vh;
+            border-radius: 10vh;
+            margin: 0 0 0 1vh;
+            margin-left: 1vh;
+
+            display: grid;
+            grid-template-columns: 20% 60% 20%;
+            grid-template-rows: 100%;
+            grid-template-areas: 'ua un ut';
+            .userAvatar{
+                height: 100%;
+                // background-color: red;
+                // border: green solid 1px;
+                grid-area: ua;
+                @include center;
+                .avaImg{
+                    height: 60%;
+                }
+            }
+            .userName{
+                height: 100%;
+                // background-color: red;
+                // border: green solid 1px;
+                grid-area: un;
+                @include center;
+            }
+            .userNoti{
+                height: 100%;
+                // background-color: red;
+                // border: green solid 1px;
+                grid-area: ut;
+                @include center;
+                .notImg{
+                    height: 50%;
+                }
+            }
+        }
+        button{
+            // background-color: blue;
+            background-color: transparent;
+        }
+        button:hover{
+            @include butHov;
+        }
+        button:active{
+            @include butAct;
+        }
+    }
 }
